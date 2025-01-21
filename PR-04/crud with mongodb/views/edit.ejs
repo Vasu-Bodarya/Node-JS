@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Record</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #6a4f4b;
+            text-align: center;
+            font-size: 28px;
+            font-family: 'Cursive', sans-serif;
+            margin-bottom: 20px;
+        }
+
+        form {
+            width: 100%;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        table td {
+            padding: 10px;
+            font-size: 18px;
+            color: #333;
+        }
+
+        table input[type="text"],
+        table input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        table input[type="text"]:focus,
+        table input[type="file"]:focus {
+            border-color: #6a4f4b;
+            outline: none;
+        }
+
+        table img {
+            max-width: 100px;
+            margin-top: 10px;
+        }
+
+        .submit-btn {
+            background-color: #004225;
+            color: white;
+            font-weight: 700;
+            border: 0;
+            border-radius: 5px;
+            padding: 12px 25px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: #003218;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: 700;
+            color: #6a4f4b;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: #004225;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Edit Record</h2>
+
+        <form method="post" action="/updateRecord" enctype="multipart/form-data">
+            <input type="hidden" value="<%= single.id %>" name="editid">
+            <table>
+                <tr>
+                    <td>Book Name:</td>
+                    <td>
+                        <input type="text" value="<%= single.name %>" name="name" required placeholder="Enter book name">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Book Price:</td>
+                    <td>
+                        <input type="text" value="<%= single.price %>" name="price" required placeholder="Enter book price">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Book Pages:</td>
+                    <td>
+                        <input type="text" value="<%= single.pages %>" name="pages" required placeholder="Enter number of pages">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Book Author:</td>
+                    <td>
+                        <input type="text" value="<%= single.author %>" name="author" required placeholder="Enter book author">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Book Image:</td>
+                    <td>
+                        <input type="file" name="image">
+                        <img src="<%= single.image %>" alt="Current Image" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="2" align="center">
+                        <input type="submit" value="Update Record" class="submit-btn">
+                    </td>
+                </tr>
+            </table>
+        </form>
+
+        <a href="/" class="back-link">Click to View Your Data</a>
+    </div>
+</body>
+
+</html>
