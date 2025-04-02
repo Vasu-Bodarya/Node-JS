@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up Form</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #6C63FF;
+            --secondary-color: #FF6584;
+            --background-color: #F8F9FA;
+            --text-color: #333;
+            --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: var(--background-color);
+        }
+
+        .container {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: var(--box-shadow);
+            width: 400px;
+            padding: 3rem;
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .heading h2 {
+            color: var(--text-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .heading h6 {
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        .toggle {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .input-wrap {
+            margin-bottom: 1.5rem;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            outline: none;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .input-field:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 8px rgba(108, 99, 255, 0.3);
+        }
+
+        .sign-btn {
+            background: var(--primary-color);
+            color: #fff;
+            padding: 1rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s;
+        }
+
+        .sign-btn:hover {
+            background: #5848e6;
+        }
+
+        .text {
+            color: #777;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+
+        .text a {
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="logo">BlogCanvas</div>
+        <div class="heading">
+            <h2>Get Started</h2>
+            <h6>Already Have An Account? <a href="/" class="toggle">Sign In</a></h6>
+        </div>
+        <form action="/registerUser" autocomplete="off" method="post">
+            <div class="input-wrap">
+                <input type="text" name="name" minlength="4" class="input-field" required placeholder="Your Name">
+            </div>
+            <div class="input-wrap">
+                <input type="email" name="email" class="input-field" required placeholder="Your Email">
+            </div>
+            <div class="input-wrap">
+                <input type="password" name="password" minlength="6" class="input-field" required placeholder="Password">
+            </div>
+            <input type="submit" value="Sign Up" class="sign-btn" />
+            <p class="text">By signing up, I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></p>
+        </form>
+    </div>
+</body>
+
+</html>

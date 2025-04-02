@@ -1,0 +1,78 @@
+<%- include('Header') %>
+
+<section id="blog" class="py-5 bg-light">
+  <div class="container">
+    <% if (blogs.length === 0) { %>
+      <div class="text-center mt-5">
+        <h2 class="text-secondary">No Blogs Available</h2>
+      </div>
+    <% } else { %>
+      <h2 class="text-center mb-5 text-primary fw-bold">Blog Repository</h2>
+      <div class="row g-4">
+        <% blogs.forEach((blog) => { %>
+          <div class="col-md-6 col-lg-4">
+            <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+              <img src="<%= blog?.image %>" alt="Blog image" class="card-img-top" style="height: 220px; object-fit: cover;">
+              <div class="card-body p-4">
+                <h5 class="card-title text-dark fw-bold"><%= blog?.title %></h5>
+                <p class="card-text text-muted" style="font-size: 0.9rem;"><%= blog?.description.slice(0, 100) %>...</p>
+                <p class="card-text">
+                  <small class="text-muted">By <%= blog?.author %></small>
+                </p>
+                
+                <!-- Price and Quantity Section -->
+                <p class="card-text fw-bold text-success">Price: $<%= blog?.price %></p>
+                <p class="card-text text-muted">Quantity: <%= blog?.quantity %></p>
+                
+                <a href="/readmore?readmoreId=<%= blog?.id %>" class="btn btn-outline-primary w-100 rounded-pill">Read More</a>
+              </div>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+    <% } %>
+  </div>
+</section>
+
+<%- include('Footer') %>
+
+<style>
+  /* Blog Section Styling */
+  #blog {
+    background: #f8f9fa;
+  }
+
+  /* Card Styling */
+  #blog .card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  #blog .card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Image Styling */
+  #blog .card-img-top {
+    border-radius: 15px 15px 0 0;
+  }
+
+  /* Button Styling */
+  #blog .btn-outline-primary {
+    border-width: 2px;
+    font-weight: 600;
+    padding: 10px 15px;
+  }
+
+  #blog .btn-outline-primary:hover {
+    background-color: #007bff;
+    color: #fff;
+  }
+
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    #blog .col-md-6 {
+      margin-bottom: 1.5rem;
+    }
+  }
+</style>

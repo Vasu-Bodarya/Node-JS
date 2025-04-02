@@ -1,0 +1,109 @@
+<%- include('Header') %>
+
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row align-items-center">
+            <!-- Image Section -->
+            <div class="col-lg-6 mb-4 text-center">
+                <% if (single && single.image) { %>
+                    <img src="<%= single.image %>" alt="Image" class="rounded img-fluid shadow-lg" style="max-height: 400px; object-fit: cover;">
+                <% } else { %>
+                    <p class="text-muted">No image available</p>
+                <% } %>
+            </div>
+            <!-- Content Section -->
+            <div class="col-lg-6">
+                <h2 class="mb-3 text-dark fw-bold">Title: <%= single.title ? single.title : "No Title Available" %></h2>
+                <p class="text-muted" style="font-size: 1.1rem;">Description: <%= single.description ? single.description : "No Description Available" %></p>
+                <h5 class="text-secondary">Author: <%= single.author ? single.author : "Unknown Author" %></h5>
+                
+                <!-- Price and Quantity Section -->
+                <div class="mt-3">
+                    <h5 class="text-dark fw-bold">Price: <%= single.price ? "$" + single.price : "Not Available" %></h5>
+                    <h5 class="text-dark fw-bold">Quantity: <%= single.quantity ? single.quantity : "Not Available" %></h5>
+                </div>
+                
+                <!-- Buttons Section -->
+                <div class="d-flex flex-wrap gap-3 mt-4">
+                    <a href="/editBlog?editId=<%= single._id %>" 
+                        class="btn btn-primary btn-lg rounded-pill shadow-sm px-4 py-2">
+                        Edit
+                    </a>
+                    <a href="/deleteBlog?deletId=<%= single._id %>" 
+                        class="btn btn-danger btn-lg rounded-pill shadow-sm px-4 py-2">
+                        Delete
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<%- include('Footer') %>
+
+<style>
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #fff;
+    color: #333;
+}
+
+h2, h5 {
+    font-weight: 700;
+}
+
+p {
+    line-height: 1.7;
+}
+
+/* Button Styles */
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-danger:hover {
+    background-color: #c9302c;
+    transform: scale(1.05);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .row {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .col-lg-6 {
+        width: 100%;
+    }
+
+    .btns {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .btns a {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+}
+</style>

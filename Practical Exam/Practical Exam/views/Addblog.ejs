@@ -1,0 +1,74 @@
+<%- include('Header') %>
+
+<div class="page-wrapper">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card shadow-lg border-0 rounded-lg p-4">
+                    <div class="card-body">
+                        <h2 class="text-center mb-4 text-dark fw-bold">Create a New Blog Post</h2>
+                        <form action="/insertBlog" method="post" enctype="multipart/form-data">
+                            
+                            <div class="form-floating mb-4">
+                                <input type="text" class="form-control" id="title" name="title" required placeholder="Enter title">
+                                <label for="title">Title</label>
+                            </div>
+
+                            <div class="form-floating mb-4">
+                                <textarea class="form-control" id="description" name="description" required rows="6" placeholder="Write description here"></textarea>
+                                <label for="description">Description</label>
+                            </div>
+
+                            <div class="form-floating mb-4">
+                                <input type="text" class="form-control" id="author" name="author" required placeholder="Your name">
+                                <label for="author">Author</label>
+                            </div>
+
+                            <div class="form-floating mb-4">
+                                <input type="number" class="form-control" id="price" name="price" required placeholder="Enter price" step="0.01">
+                                <label for="price">Price ($)</label>
+                            </div>
+
+                            <div class="form-floating mb-4">
+                                <input type="number" class="form-control" id="quantity" name="quantity" required placeholder="Enter quantity" min="1">
+                                <label for="quantity">Quantity</label>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="image" class="form-label fw-bold">Upload Image</label>
+                                <input class="form-control" type="file" id="image" name="image" required accept="image/*" onchange="previewImage(event)">
+                            </div>
+
+                            <div class="mb-4 text-center">
+                                <img id="image-preview" class="img-fluid rounded shadow-sm" style="max-height: 200px; display:none; border: 2px solid #ccc; padding: 5px;" />
+                            </div>
+
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-dark btn-lg text-uppercase fw-bold shadow">Publish Blog</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('Footer') %>
+
+<script>
+    function previewImage(event) {
+        const preview = document.getElementById('image-preview');
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function() {
+                preview.style.display = 'block';
+                preview.src = reader.result;
+            };
+            reader.readAsDataURL(file);
+        } else {
+            preview.style.display = 'none';
+        }
+    }
+</script>
